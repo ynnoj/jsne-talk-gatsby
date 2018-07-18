@@ -20,6 +20,16 @@ const Nav = styled.nav`
   margin: 0 -0.5rem;
 `
 
+const StyledLink = styled(Link)`
+  color: white;
+  padding: 0 0.5rem;
+  text-decoration: none;
+
+  &.active {
+    text-decoration: underline;
+  }
+`
+
 export default ({ siteTitle }) => (
   <Header>
     <Title>
@@ -34,32 +44,12 @@ export default ({ siteTitle }) => (
       </Link>
     </Title>
     <Nav>
-      <Link
-        to="/talks"
-        style={{
-          color: 'white',
-          padding: '0 .5rem',
-          textDecoration: 'none',
-        }}
-        activeStyle={{
-          textDecoration: 'underline',
-        }}
-      >
+      <StyledLink to="/talks" activeClassName="active">
         Talks
-      </Link>
-      <Link
-        to="/speakers"
-        style={{
-          color: 'white',
-          padding: '0 .5rem',
-          textDecoration: 'none',
-        }}
-        activeStyle={{
-          textDecoration: 'underline',
-        }}
-      >
+      </StyledLink>
+      <StyledLink to="/speakers" activeClassName="active">
         Speakers
-      </Link>
+      </StyledLink>
     </Nav>
   </Header>
 )

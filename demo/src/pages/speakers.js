@@ -1,11 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'gatsby-link'
+import styled from 'styled-components'
 
 import Grid from '../components/grid'
 import Layout from '../components/layout'
 import Speaker from '../components/speaker'
 import Title from '../components/title'
+
+const StyledLink = styled(Link)`
+  color: currentColor;
+  text-decoration: none;
+`
 
 export default ({
   data: {
@@ -17,16 +23,9 @@ export default ({
     <Grid>
       {speakers.map(({ node: speaker }) => {
         return (
-          <Link
-            to={`/speakers/${speaker.slug}`}
-            key={speaker.id}
-            style={{
-              color: 'currentColor',
-              textDecoration: 'none',
-            }}
-          >
+          <StyledLink to={`/speakers/${speaker.slug}`} key={speaker.id}>
             <Speaker speaker={speaker} />
-          </Link>
+          </StyledLink>
         )
       })}
     </Grid>
