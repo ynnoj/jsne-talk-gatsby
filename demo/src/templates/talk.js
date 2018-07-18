@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Link from 'gatsby-link'
@@ -15,37 +15,33 @@ const Meta = styled.div`
   width: 30%;
 `
 
-class TalkTemplate extends Component {
-  render() {
-    const {
+export default ({
+  data: {
+    contentfulTalk: {
       title,
       description: {
         childMarkdownRemark: { html: description },
       },
       event,
       speaker: { name, slug },
-    } = this.props.data.contentfulTalk
+    },
+  },
+}) => (
+  <Layout horizontal>
+    <Talk>
+      <Title title={title} />
+      <p dangerouslySetInnerHTML={{ __html: description }} />
+    </Talk>
+    <Meta>
+      <Title title="Speaker" />
+      <Link to={`/speakers/${slug}`}>{name}</Link>
+      <Title title="Event" />
+      <Link to={`/events/${event.slug}`}>{event.title}</Link>
+    </Meta>
+  </Layout>
+)
 
-    return (
-      <Layout horizontal>
-        <Talk>
-          <Title title={title} />
-          <p dangerouslySetInnerHTML={{ __html: description }} />
-        </Talk>
-        <Meta>
-          <Title title="Speaker" />
-          <Link to={`/speakers/${slug}`}>{name}</Link>
-          <Title title="Event" />
-          <Link to={`/events/${event.slug}`}>{event.title}</Link>
-        </Meta>
-      </Layout>
-    )
-  }
-}
-
-export default TalkTemplate
-
-export const pageQuery = graphql`
+export const query = graphql`
   query talkQuery($slug: String!) {
     contentfulTalk(slug: { eq: $slug }) {
       description {

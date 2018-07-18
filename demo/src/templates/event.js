@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Link from 'gatsby-link'
@@ -17,36 +17,32 @@ const Talks = styled.div`
   width: 30%;
 `
 
-class EventTemplate extends Component {
-  render() {
-    const { date, talk, title } = this.props.data.contentfulEvent
+export default ({
+  data: {
+    contentfulEvent: { date, title, talk },
+  },
+}) => (
+  <Layout horizontal>
+    <Event>
+      <Title title={title} />
+      <p>{date}</p>
+    </Event>
+    <Talks>
+      <Title title="Talks" />
+      <List>
+        {talk.map(talk => {
+          return (
+            <ListItem key={talk.id}>
+              <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
+            </ListItem>
+          )
+        })}
+      </List>
+    </Talks>
+  </Layout>
+)
 
-    return (
-      <Layout horizontal>
-        <Event>
-          <Title title={title} />
-          <p>{date}</p>
-        </Event>
-        <Talks>
-          <Title title="Talks" />
-          <List>
-            {talk.map(talk => {
-              return (
-                <ListItem key={talk.id}>
-                  <Link to={`/talks/${talk.slug}`}>{talk.title}</Link>
-                </ListItem>
-              )
-            })}
-          </List>
-        </Talks>
-      </Layout>
-    )
-  }
-}
-
-export default EventTemplate
-
-export const pageQuery = graphql`
+export const query = graphql`
   query eventQuery($slug: String!) {
     contentfulEvent(slug: { eq: $slug }) {
       date(formatString: "DD/MM/YY")

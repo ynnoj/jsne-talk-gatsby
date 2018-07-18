@@ -16,7 +16,7 @@ const Title = styled.h2`
   color: #222;
 `
 
-class CardComponent extends Component {
+export default class CardComponent extends Component {
   renderImage() {
     const { image, title } = this.props
 
@@ -41,5 +41,3 @@ class CardComponent extends Component {
     )
   }
 }
-
-export default CardComponent

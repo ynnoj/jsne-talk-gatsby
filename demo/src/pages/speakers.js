@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Link from 'gatsby-link'
 
@@ -7,33 +7,31 @@ import Layout from '../components/layout'
 import Speaker from '../components/speaker'
 import Title from '../components/title'
 
-class SpeakersPage extends Component {
-  render() {
-    const speakers = this.props.data.allContentfulSpeaker.edges
-
-    return (
-      <Layout>
-        <Title title="Speakers" />
-        <Grid>
-          {speakers.map(({ node: speaker }) => {
-            return (
-              <Link
-                to={`/speakers/${speaker.slug}`}
-                key={speaker.id}
-                style={{
-                  color: 'currentColor',
-                  textDecoration: 'none',
-                }}
-              >
-                <Speaker speaker={speaker} />
-              </Link>
-            )
-          })}
-        </Grid>
-      </Layout>
-    )
-  }
-}
+export default ({
+  data: {
+    allContentfulSpeaker: { edges: speakers },
+  },
+}) => (
+  <Layout>
+    <Title title="Speakers" />
+    <Grid>
+      {speakers.map(({ node: speaker }) => {
+        return (
+          <Link
+            to={`/speakers/${speaker.slug}`}
+            key={speaker.id}
+            style={{
+              color: 'currentColor',
+              textDecoration: 'none',
+            }}
+          >
+            <Speaker speaker={speaker} />
+          </Link>
+        )
+      })}
+    </Grid>
+  </Layout>
+)
 
 export const query = graphql`
   query {
@@ -58,5 +56,3 @@ export const query = graphql`
     }
   }
 `
-
-export default SpeakersPage
