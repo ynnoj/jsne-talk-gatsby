@@ -4,11 +4,11 @@
 
 ## Slides
 
-Slides available [here](https://jsne-gatsby-talk.now.sh).
+Slides available [here](https://jsne-talk-gatsby.now.sh).
 
 ## Demo
 
-Check out the demo [here](https://jsne.steele.pro).
+Check out the demo [here](https://jsne-talk-gatsby.netlify.com).
 
 ## Resources
 
