@@ -2,10 +2,6 @@
 
 > 📣 Gatsby talk at JavaScript NE from July 2018
 
-## Slides
-
-Slides available [here](https://jsne-talk-gatsby.now.sh).
-
 ## Demo
 
 Check out the demo [here](https://jsne-talk-gatsby.netlify.com).
