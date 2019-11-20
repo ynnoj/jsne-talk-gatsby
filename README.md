@@ -2,9 +2,11 @@
 
 > 📣 Gatsby talk at JavaScript NE from July 2018
 
-## Demo
+## Description
 
-Check out the demo [here](https://jsne-talk-gatsby.netlify.com).
+Building fast, static React webites with [Gatsby](https://www.gatsbyjs.org).
+
+💻 [**Demo**](https://jsne-talk-gatsby.netlify.com)
 
 ## Resources
 
